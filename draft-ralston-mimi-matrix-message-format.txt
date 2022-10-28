@@ -89,7 +89,7 @@ Table of Contents
    in turn be layered over end-to-end encryption.  Matrix events have
    been designed for interoperability from the outset between
    heterogenous messaging platforms, and define a real-world highest-
-   common denominator set of messages types, including:
+   common denominator set of message types, including:
 
    *  Instant messages (plain & rich text)
 
