@@ -29,8 +29,36 @@ author:
     email: travisr@matrix.org
 
 normative:
-
+  MxEvents:
+    target: https://spec.matrix.org/v1.4/client-server-api/#events
+    title: "Events | Client-Server API"
+    date: 2022
+    author:
+      - org: The Matrix.org Foundation C.I.C.
+  MSC1767:
+    target: https://github.com/matrix-org/matrix-spec-proposals/blob/d6046d8402e7a3c7a4fcbc9da16ea9bad5968992/proposals/1767-extensible-events.md
+    title: "Extensible event types & fallback in Matrix (v2)"
+    date: 2022
+    author:
+      - name: Matthew Hodgson
+        org: The Matrix.org Foundation C.I.C.
+      - name: Travis Ralston
+        org: The Matrix.org Foundation C.I.C.
+  MSC3551:
+    target: https://github.com/matrix-org/matrix-spec-proposals/blob/5bf2118e8ac873e7845b1eedde8dd7bc187ed673/proposals/3551-extensible-events-files.md
+    title: "Extensible Events - Files"
+    date: 2021
+    author:
+      - name: Travis Ralston
+        org: The Matrix.org Foundation C.I.C.
 informative:
+  MSC3381:
+    target: https://github.com/matrix-org/matrix-spec-proposals/blob/95fdc44b904d2b4d2f227db99050e539e43f3509/proposals/3381-polls.md
+    title: "Polls (mk II)"
+    date: 2022
+    author:
+      - name: Travis Ralston
+        org: The Matrix.org Foundation C.I.C.
   DMLS:
     target: https://gitlab.matrix.org/matrix-org/mls-ts/-/blob/dd57bc25f6145ddedfb6d193f6baebf5133db7ed/decentralised.org
     title: "Decentralised MLS"
@@ -58,7 +86,7 @@ Communication between machines would largely take the form of key sharing or VoI
 
 # Matrix Events
 
-[Events](https://spec.matrix.org/v1.4/client-server-api/#events) are JSON objects which get signed and adapted by the server before being forwarded to other servers/users in the room. These JSON objects have a few key fields:
+Events {{MxEvents}} are JSON objects which get signed and adapted by the server before being forwarded to other servers/users in the room. These JSON objects have a few key fields:
 
 * `sender`: The user ID (`@alice:example.org`) which sent the event.
 * `room_id`: The room ID (`!room:example.org`) for where the event was sent.
@@ -66,7 +94,7 @@ Communication between machines would largely take the form of key sharing or VoI
 * `content`: Type-specific JSON object.
 * Other fields (TODO: define these in detail when more relevant to the doc).
 
-Under [MSC1767](https://github.com/matrix-org/matrix-spec-proposals/pull/1767) (a spec change proposal in the existing Matrix open standard ecosystem), callers would be able to combine useful chunks of content (other event types) to indicate how a client should render the event, if it does not already know.
+Under MSC1767 {{MSC1767}} (a spec change proposal in the existing Matrix open standard ecosystem), callers would be able to combine useful chunks of content (other event types) to indicate how a client should render the event, if it does not already know.
 
 An example of a simple text message would be:
 
@@ -95,7 +123,7 @@ This can be made more complex if the sender chooses to mix in other mimetypes:
 }
 ```
 
-To demonstrate extensibility, a file upload ([MSC3551](https://github.com/matrix-org/matrix-spec-proposals/pull/3551)) might look like:
+To demonstrate extensibility, a file upload {{MSC3551}} might look like:
 
 ```
 {
@@ -114,7 +142,7 @@ To demonstrate extensibility, a file upload ([MSC3551](https://github.com/matrix
 
 In this example, clients which do not understand `m.file` but do understand `m.text` (or `m.message`) would show just the plain text instead of a download button or link. The alternative to falling back would be to hide the unrenderable event, causing the conversation history to be interrupted: this has fairly obvious negative consequences on user experience. Instead, by defining a fallback mechanism the user is still able to participate in the conversation, though might need to ask for more information. It is expected that the "base types" (text messages, images, videos, and generic files) would be supported by all clients to ensure there are sufficient building blocks for future extensibility.
 
-A more complete use-case for extensible events is described by [MSC3381: Polls](https://github.com/matrix-org/matrix-spec-proposals/pull/3381) - clients which do not yet have support for polls can present their users with text fallback for the question and the question asker can manually tally up "improper" responses (if those users simply sent text messages in response to the question). Clients which do support polls would simply show the poll and its question/options for the user to click on - their response would be sent to the room as a (deliberately) unrenderable event for other clients to tally up automatically.
+A more complete use-case for extensible events is described by "MSC3381: Polls" {{MSC3381}} - clients which do not yet have support for polls can present their users with text fallback for the question and the question asker can manually tally up "improper" responses (if those users simply sent text messages in response to the question). Clients which do support polls would simply show the poll and its question/options for the user to click on - their response would be sent to the room as a (deliberately) unrenderable event for other clients to tally up automatically.
 
 # Encryption
 
