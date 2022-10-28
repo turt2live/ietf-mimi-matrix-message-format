@@ -1040,7 +1040,7 @@ svg :is([stroke="fill"], [fill^="#fff"]) {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Ralston</td>
-<td class="center">Expires 30 April 2023</td>
+<td class="center">Expires 1 May 2023</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1053,12 +1053,12 @@ svg :is([stroke="fill"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-ralston-mimi-matrix-message-format-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2022-10-27" class="published">27 October 2022</time>
+<time datetime="2022-10-28" class="published">28 October 2022</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Informational</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2023-04-30">30 April 2023</time></dd>
+<dd class="expires"><time datetime="2023-05-01">1 May 2023</time></dd>
 <dt class="label-authors">Author:</dt>
 <dd class="authors">
 <div class="author">
@@ -1108,7 +1108,7 @@ svg :is([stroke="fill"], [fill^="#fff"]) {
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 30 April 2023.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 1 May 2023.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1175,8 +1175,11 @@ svg :is([stroke="fill"], [fill^="#fff"]) {
       <h2 id="name-introduction">
 <a href="#section-1" class="section-number selfRef">1. </a><a href="#name-introduction" class="section-name selfRef">Introduction</a>
       </h2>
-<p id="section-1-1">Interoperable instant messaging requires a common format for all participants to contribute to the conversation or state of the room. Matrix, alongside its existing transport functionality [TODO: Link to draft-ralston-mimi-matrix-transport], has support for arbitrarily extensible payloads of information called "events" to carry information between machines and users, all with encryption if desired.<a href="#section-1-1" class="pilcrow">¶</a></p>
-<p id="section-1-2">Communication between machines would largely take the form of key sharing or VoIP signalling (in a future phase of MIMI) while communication between users would be text, images, etc from normal Instant Messaging (IM) semantics.<a href="#section-1-2" class="pilcrow">¶</a></p>
+<p id="section-1-1">Interoperable instant messaging requires a common format for all participants to contribute to the conversation or state of the room.
+Matrix, alongside its existing transport functionality [TODO: Link to draft-ralston-mimi-matrix-transport], has support for arbitrarily
+extensible payloads of information called "events" to carry information between machines and users, all with encryption if desired.<a href="#section-1-1" class="pilcrow">¶</a></p>
+<p id="section-1-2">Communication between machines would largely take the form of key sharing or VoIP signalling (in a future phase of MIMI) while communication
+between users would be text, images, etc from normal Instant Messaging (IM) semantics.<a href="#section-1-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="matrix-events">
@@ -1184,7 +1187,8 @@ svg :is([stroke="fill"], [fill^="#fff"]) {
       <h2 id="name-matrix-events">
 <a href="#section-2" class="section-number selfRef">2. </a><a href="#name-matrix-events" class="section-name selfRef">Matrix Events</a>
       </h2>
-<p id="section-2-1"><a href="https://spec.matrix.org/v1.4/client-server-api/#events">Events</a> are JSON objects which get signed and adapted by the server before being forwarded to other servers/users in the room. These JSON objects have a few key fields:<a href="#section-2-1" class="pilcrow">¶</a></p>
+<p id="section-2-1">Events <span>[<a href="#MxEvents" class="cite xref">MxEvents</a>]</span> are JSON objects which get signed and adapted by the server before being forwarded to other servers/users in the room.
+These JSON objects have a few key fields:<a href="#section-2-1" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-2-2.1">
           <code>sender</code>: The user ID (<code>@alice:example.org</code>) which sent the event.<a href="#section-2-2.1" class="pilcrow">¶</a>
@@ -1201,9 +1205,10 @@ svg :is([stroke="fill"], [fill^="#fff"]) {
         <li class="normal" id="section-2-2.5">Other fields (TODO: define these in detail when more relevant to the doc).<a href="#section-2-2.5" class="pilcrow">¶</a>
 </li>
       </ul>
-<p id="section-2-3">Under <a href="https://github.com/matrix-org/matrix-spec-proposals/pull/1767">MSC1767</a> (a spec change proposal in the existing Matrix open standard ecosystem), callers would be able to combine useful chunks of content (other event types) to indicate how a client should render the event, if it does not already know.<a href="#section-2-3" class="pilcrow">¶</a></p>
+<p id="section-2-3">Under MSC1767 <span>[<a href="#MSC1767" class="cite xref">MSC1767</a>]</span> (a spec change proposal in the existing Matrix open standard ecosystem), callers would be able to combine useful
+chunks of content (other event types) to indicate how a client should render the event, if it does not already know.<a href="#section-2-3" class="pilcrow">¶</a></p>
 <p id="section-2-4">An example of a simple text message would be:<a href="#section-2-4" class="pilcrow">¶</a></p>
-<p id="section-2-5"><code>
+<p id="section-2-5"><code>json
 {
     "type": "m.message",
     "content": {
@@ -1213,7 +1218,7 @@ svg :is([stroke="fill"], [fill^="#fff"]) {
 }
 </code><a href="#section-2-5" class="pilcrow">¶</a></p>
 <p id="section-2-6">This can be made more complex if the sender chooses to mix in other mimetypes:<a href="#section-2-6" class="pilcrow">¶</a></p>
-<p id="section-2-7"><code>
+<p id="section-2-7"><code>json
 {
   "type": "m.message",
   "content": {
@@ -1225,8 +1230,8 @@ svg :is([stroke="fill"], [fill^="#fff"]) {
   }
 }
 </code><a href="#section-2-7" class="pilcrow">¶</a></p>
-<p id="section-2-8">To demonstrate extensibility, a file upload (<a href="https://github.com/matrix-org/matrix-spec-proposals/pull/3551">MSC3551</a>) might look like:<a href="#section-2-8" class="pilcrow">¶</a></p>
-<p id="section-2-9"><code>
+<p id="section-2-8">To demonstrate extensibility, a file upload <span>[<a href="#MSC3551" class="cite xref">MSC3551</a>]</span> might look like:<a href="#section-2-8" class="pilcrow">¶</a></p>
+<p id="section-2-9"><code>json
 {
   "type": "m.file",
   "content": {
@@ -1240,8 +1245,15 @@ svg :is([stroke="fill"], [fill^="#fff"]) {
   }
 }
 </code><a href="#section-2-9" class="pilcrow">¶</a></p>
-<p id="section-2-10">In this example, clients which do not understand <code>m.file</code> but do understand <code>m.text</code> (or <code>m.message</code>) would show just the plain text instead of a download button or link. The alternative to falling back would be to hide the unrenderable event, causing the conversation history to be interrupted: this has fairly obvious negative consequences on user experience. Instead, by defining a fallback mechanism the user is still able to participate in the conversation, though might need to ask for more information. It is expected that the "base types" (text messages, images, videos, and generic files) would be supported by all clients to ensure there are sufficient building blocks for future extensibility.<a href="#section-2-10" class="pilcrow">¶</a></p>
-<p id="section-2-11">A more complete use-case for extensible events is described by <a href="https://github.com/matrix-org/matrix-spec-proposals/pull/3381">MSC3381: Polls</a> - clients which do not yet have support for polls can present their users with text fallback for the question and the question asker can manually tally up "improper" responses (if those users simply sent text messages in response to the question). Clients which do support polls would simply show the poll and its question/options for the user to click on - their response would be sent to the room as a (deliberately) unrenderable event for other clients to tally up automatically.<a href="#section-2-11" class="pilcrow">¶</a></p>
+<p id="section-2-10">In this example, clients which do not understand <code>m.file</code> but do understand <code>m.text</code> (or <code>m.message</code>) would show just the plain text instead of
+a download button or link. The alternative to falling back would be to hide the unrenderable event, causing the conversation history to be interrupted:
+this has fairly obvious negative consequences on user experience. Instead, by defining a fallback mechanism the user is still able to participate
+in the conversation, though might need to ask for more information. It is expected that the "base types" (text messages, images, videos, and
+generic files) would be supported by all clients to ensure there are sufficient building blocks for future extensibility.<a href="#section-2-10" class="pilcrow">¶</a></p>
+<p id="section-2-11">A more complete use-case for extensible events is described by "MSC3381: Polls" <span>[<a href="#MSC3381" class="cite xref">MSC3381</a>]</span> - clients which do not yet have support for polls
+can present their users with text fallback for the question and the question asker can manually tally up "improper" responses (if those users
+simply sent text messages in response to the question). Clients which do support polls would simply show the poll and its question/options for
+the user to click on - their response would be sent to the room as a (deliberately) unrenderable event for other clients to tally up automatically.<a href="#section-2-11" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="encryption">
@@ -1249,7 +1261,9 @@ svg :is([stroke="fill"], [fill^="#fff"]) {
       <h2 id="name-encryption">
 <a href="#section-3" class="section-number selfRef">3. </a><a href="#name-encryption" class="section-name selfRef">Encryption</a>
       </h2>
-<p id="section-3-1">Matrix has specified an encryption algorithm for events called Megolm, however for the purposes of MIMI it would be desirable to adopt MLS <span>[<a href="#I-D.ietf-mls-protocol" class="cite xref">I-D.ietf-mls-protocol</a>]</span> instead. Some bookkeeping changes are required to support MLS in a decentralized environment like Matrix: those are currently defined by <span>[<a href="#DMLS" class="cite xref">DMLS</a>]</span>.<a href="#section-3-1" class="pilcrow">¶</a></p>
+<p id="section-3-1">Matrix has specified an encryption algorithm for events called Megolm, however for the purposes of MIMI it would be desirable to adopt MLS
+<span>[<a href="#I-D.ietf-mls-protocol" class="cite xref">I-D.ietf-mls-protocol</a>]</span> instead. Some bookkeeping changes are required to support MLS in a decentralized environment like Matrix: those
+are currently defined by <span>[<a href="#DMLS" class="cite xref">DMLS</a>]</span>.<a href="#section-3-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="security-considerations">
@@ -1270,8 +1284,20 @@ svg :is([stroke="fill"], [fill^="#fff"]) {
         </h3>
 <dl class="references">
 <dt id="I-D.ietf-mls-protocol">[I-D.ietf-mls-protocol]</dt>
-      <dd>
+        <dd>
 <span class="refAuthor">Barnes, R.</span>, <span class="refAuthor">Beurdouche, B.</span>, <span class="refAuthor">Robert, R.</span>, <span class="refAuthor">Millican, J.</span>, <span class="refAuthor">Omara, E.</span>, and <span class="refAuthor">K. Cohn-Gordon</span>, <span class="refTitle">"The Messaging Layer Security (MLS) Protocol"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-mls-protocol-16</span>, <time datetime="2022-07-11" class="refDate">11 July 2022</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-mls-protocol-16">https://datatracker.ietf.org/doc/html/draft-ietf-mls-protocol-16</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="MSC1767">[MSC1767]</dt>
+        <dd>
+<span class="refAuthor">Hodgson, M.</span> and <span class="refAuthor">T. Ralston</span>, <span class="refTitle">"Extensible event types &amp; fallback in Matrix (v2)"</span>, <time datetime="2022" class="refDate">2022</time>, <span>&lt;<a href="https://github.com/matrix-org/matrix-spec-proposals/blob/d6046d8402e7a3c7a4fcbc9da16ea9bad5968992/proposals/1767-extensible-events.md">https://github.com/matrix-org/matrix-spec-proposals/blob/d6046d8402e7a3c7a4fcbc9da16ea9bad5968992/proposals/1767-extensible-events.md</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="MSC3551">[MSC3551]</dt>
+        <dd>
+<span class="refAuthor">Ralston, T.</span>, <span class="refTitle">"Extensible Events - Files"</span>, <time datetime="2021" class="refDate">2021</time>, <span>&lt;<a href="https://github.com/matrix-org/matrix-spec-proposals/blob/5bf2118e8ac873e7845b1eedde8dd7bc187ed673/proposals/3551-extensible-events-files.md">https://github.com/matrix-org/matrix-spec-proposals/blob/5bf2118e8ac873e7845b1eedde8dd7bc187ed673/proposals/3551-extensible-events-files.md</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="MxEvents">[MxEvents]</dt>
+      <dd>
+<span class="refAuthor">The Matrix.org Foundation C.I.C.</span>, <span class="refTitle">"Events | Client-Server API"</span>, <time datetime="2022" class="refDate">2022</time>, <span>&lt;<a href="https://spec.matrix.org/v1.4/client-server-api/#events">https://spec.matrix.org/v1.4/client-server-api/#events</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 </dl>
 </section>
@@ -1281,8 +1307,12 @@ svg :is([stroke="fill"], [fill^="#fff"]) {
         </h3>
 <dl class="references">
 <dt id="DMLS">[DMLS]</dt>
-      <dd>
+        <dd>
 <span class="refAuthor">Chathi, H.</span>, <span class="refTitle">"Decentralised MLS"</span>, <span class="seriesInfo">Web https://gitlab.matrix.org/matrix-org/mls-ts/-/blob/dd57bc25f6145ddedfb6d193f6baebf5133db7ed/decentralised.org</span>, <time datetime="2021" class="refDate">2021</time>, <span>&lt;<a href="https://gitlab.matrix.org/matrix-org/mls-ts/-/blob/dd57bc25f6145ddedfb6d193f6baebf5133db7ed/decentralised.org">https://gitlab.matrix.org/matrix-org/mls-ts/-/blob/dd57bc25f6145ddedfb6d193f6baebf5133db7ed/decentralised.org</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="MSC3381">[MSC3381]</dt>
+      <dd>
+<span class="refAuthor">Ralston, T.</span>, <span class="refTitle">"Polls (mk II)"</span>, <time datetime="2022" class="refDate">2022</time>, <span>&lt;<a href="https://github.com/matrix-org/matrix-spec-proposals/blob/95fdc44b904d2b4d2f227db99050e539e43f3509/proposals/3381-polls.md">https://github.com/matrix-org/matrix-spec-proposals/blob/95fdc44b904d2b4d2f227db99050e539e43f3509/proposals/3381-polls.md</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 </dl>
 </section>
