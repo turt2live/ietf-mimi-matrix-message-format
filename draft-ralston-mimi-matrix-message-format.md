@@ -95,7 +95,7 @@ Matrix is an open protocol for interoperable, decentralized, secure communicatio
 [TODO: Link to draft-ralston-mimi-matrix-transport], defines a rich taxonomy of arbitrarily extensible payloads of
 information called "events" to carry information between machines and users, which may in turn
 be layered over end-to-end encryption.  Matrix events have been designed for interoperability from the outset between
-heterogenous messaging platforms, and define a real-world highest-common denominator set of messages for interoperability,
+heterogenous messaging platforms, and define a real-world highest-common denominator set of messages types,
 including:
 
  * Instant messages (plain & rich text)
