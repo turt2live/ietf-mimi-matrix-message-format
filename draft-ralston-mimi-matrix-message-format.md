@@ -106,6 +106,7 @@ including:
  * Replies
  * Deletions
  * Stickers
+ * Custom emoji
  * Voice messages
  * Polls
  * Static location share
@@ -133,7 +134,7 @@ and signed by the server before being forwarded to other servers/users in the ro
 These JSON objects have a few key fields:
 
 * `type`: A string the client can use to determine how to render the event. This is reverse-DNS namespaced, with `m.` as
-  a privileged prefix for event types defined by the Matrix specification.
+  a privileged prefix for event types formally adopted and defined within the Matrix specification.
 * `sender`: The user ID (`@alice:example.org`) which sent the event.
 * `room_id`: The room ID (`!room:example.org`) for where the event was sent.
 * `content`: Type-specific JSON object.
