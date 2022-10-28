@@ -103,7 +103,7 @@ chunks of content (other event types) to indicate how a client should render the
 
 An example of a simple text message would be:
 
-```json
+~~~ json
 {
     "type": "m.message",
     "content": {
@@ -111,11 +111,11 @@ An example of a simple text message would be:
         "m.html": "i am a <strong>fish</strong>"
     }
 }
-```
+~~~
 
 This can be made more complex if the sender chooses to mix in other mimetypes:
 
-```json
+~~~ json
 {
   "type": "m.message",
   "content": {
@@ -126,11 +126,11 @@ This can be made more complex if the sender chooses to mix in other mimetypes:
     ]
   }
 }
-```
+~~~
 
 To demonstrate extensibility, a file upload {{MSC3551}} might look like:
 
-```json
+~~~ json
 {
   "type": "m.file",
   "content": {
@@ -143,7 +143,7 @@ To demonstrate extensibility, a file upload {{MSC3551}} might look like:
     }
   }
 }
-```
+~~~
 
 In this example, clients which do not understand `m.file` but do understand `m.text` (or `m.message`) would show just the plain text instead of
 a download button or link. The alternative to falling back would be to hide the unrenderable event, causing the conversation history to be interrupted:
