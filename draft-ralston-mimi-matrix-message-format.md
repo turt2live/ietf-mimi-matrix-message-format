@@ -98,7 +98,7 @@ Under MSC1767 {{MSC1767}} (a spec change proposal in the existing Matrix open st
 
 An example of a simple text message would be:
 
-```
+```json
 {
     "type": "m.message",
     "content": {
@@ -110,7 +110,7 @@ An example of a simple text message would be:
 
 This can be made more complex if the sender chooses to mix in other mimetypes:
 
-```
+```json
 {
   "type": "m.message",
   "content": {
@@ -125,7 +125,7 @@ This can be made more complex if the sender chooses to mix in other mimetypes:
 
 To demonstrate extensibility, a file upload {{MSC3551}} might look like:
 
-```
+```json
 {
   "type": "m.file",
   "content": {
