@@ -27,11 +27,21 @@ author:
     fullname: Travis Ralston
     organization: The Matrix.org Foundation C.I.C.
     email: travisr@matrix.org
+ -
+    fullname: Matthew Hodgson
+    organization: The Matrix.org Foundation C.I.C.
+    email: matthew@matrix.org
 
 normative:
   MxEvents:
     target: https://spec.matrix.org/v1.4/client-server-api/#events
     title: "Events | Client-Server API"
+    date: 2022
+    author:
+      - org: The Matrix.org Foundation C.I.C.
+  MxEventsSchema:
+    target: https://github.com/matrix-org/matrix-spec/tree/main/data/event-schemas/schema
+    title: "Matrix Event JSON Schemas"
     date: 2022
     author:
       - org: The Matrix.org Foundation C.I.C.
@@ -81,25 +91,57 @@ This document specifies a message format using Matrix for messaging interoperabi
 # Introduction
 
 Interoperable instant messaging requires a common format for all participants to contribute to the conversation or state of the room.
-Matrix, alongside its existing transport functionality [TODO: Link to draft-ralston-mimi-matrix-transport], has support for arbitrarily
-extensible payloads of information called "events" to carry information between machines and users, all with encryption if desired.
+Matrix is an open protocol for interoperable, decentralized, secure communication, and alongside its existing transport functionality
+[TODO: Link to draft-ralston-mimi-matrix-transport], defines a rich taxonomy of arbitrarily extensible payloads of
+information called "events" to carry information between machines and users, which may in turn
+be layered over end-to-end encryption.  Matrix events have been designed for interoperability from the outset between
+heterogenous messaging platforms, and define a real-world highest-common denominator set of messages types,
+including:
 
-Communication between machines would largely take the form of key sharing or VoIP signalling (in a future phase of MIMI) while communication
-between users would be text, images, etc from normal Instant Messaging (IM) semantics.
+ * Instant messages (plain & rich text)
+ * End-to-end encrypted payloads
+ * File transfer
+ * Reactions (emoji, textual, image-based)
+ * Edits
+ * Replies
+ * Deletions
+ * Stickers
+ * Voice messages
+ * Polls
+ * Static location share
+ * Live location share (ephemeral)
+ * Live location share (persistent)
+ * Spoiler text
+ * Threaded messages
+ * Typing notifications
+ * Read receipts
+ * Read-up-to markers
+ * Presence
+ * 1:1 VoIP signalling
+ * Multiparty VoIP signalling
+
+Matrix events are extensible, and proposals exist for additional event formats ranging from attaching 3D world geometry
+to conversations (for openly standardised metaverse communication) through to transferring healthcare data (FHIR).
 
 # Matrix Events
 
-Events {{MxEvents}} are JSON objects which get signed and adapted by the server before being forwarded to other servers/users in the room.
+Events are JSON objects which by default follow the formal schemas defined in the Matrix Client Server API {{MxEvents}},
+also available as JSON Schema definitions {{MxEventsSchema}}.  Events are extensible and may contain additional off-schema
+prefixed fields, or use prefixed event types not yet defined in the spec.  Events then get augumented
+and signed by the server before being forwarded to other servers/users in the room.
+
 These JSON objects have a few key fields:
 
+* `type`: A string the client can use to determine how to render the event. This is reverse-DNS namespaced, with `m.` as
+  a privileged prefix for event types defined by the Matrix specification.
 * `sender`: The user ID (`@alice:example.org`) which sent the event.
 * `room_id`: The room ID (`!room:example.org`) for where the event was sent.
-* `type`: A string the client can use to determine how to render the event.
 * `content`: Type-specific JSON object.
 * Other fields (TODO: define these in detail when more relevant to the doc).
 
-Under MSC1767 {{MSC1767}} (a spec change proposal in the existing Matrix open standard ecosystem), callers would be able to combine useful
-chunks of content (other event types) to indicate how a client should render the event, if it does not already know.
+Under MSC1767 {{MSC1767}} (a spec change proposal in the existing Matrix open standard ecosystem), callers can combine
+together multiple event types to provide fallback representations of an event, to provide backwards compatibility when
+rendering unknown event types.
 
 An example of a simple text message would be:
 
@@ -134,7 +176,7 @@ To demonstrate extensibility, a file upload {{MSC3551}} might look like:
 {
   "type": "m.file",
   "content": {
-    "m.text": "Upload: foo.pdf (12 KB)",
+    "m.text": "Upload: foo.pdf https://example.org/_matrix/media/v3/download/example.org/abcd1234 (12 KB)",
     "m.file": {
       "url": "mxc://example.org/abcd1234",
       "name": "foo.pdf",
@@ -146,8 +188,8 @@ To demonstrate extensibility, a file upload {{MSC3551}} might look like:
 ~~~
 
 In this example, clients which do not understand `m.file` but do understand `m.text` (or `m.message`) would show just the plain text instead of
-a download button or link. The alternative to falling back would be to hide the unrenderable event, causing the conversation history to be interrupted:
-this has fairly obvious negative consequences on user experience. Instead, by defining a fallback mechanism the user is still able to participate
+a download button. The alternative to falling back would be to hide the unrenderable event, causing the conversation history to be fragmented:
+this has clear negative consequences on user experience. Instead, by defining a fallback mechanism the user is still able to participate
 in the conversation, though might need to ask for more information. It is expected that the "base types" (text messages, images, videos, and
 generic files) would be supported by all clients to ensure there are sufficient building blocks for future extensibility.
 
