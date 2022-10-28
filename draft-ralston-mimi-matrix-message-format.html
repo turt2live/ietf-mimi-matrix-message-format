@@ -1208,7 +1208,8 @@ These JSON objects have a few key fields:<a href="#section-2-1" class="pilcrow">
 <p id="section-2-3">Under MSC1767 <span>[<a href="#MSC1767" class="cite xref">MSC1767</a>]</span> (a spec change proposal in the existing Matrix open standard ecosystem), callers would be able to combine useful
 chunks of content (other event types) to indicate how a client should render the event, if it does not already know.<a href="#section-2-3" class="pilcrow">¶</a></p>
 <p id="section-2-4">An example of a simple text message would be:<a href="#section-2-4" class="pilcrow">¶</a></p>
-<p id="section-2-5"><code>json
+<div id="section-2-5">
+<pre class="lang-json sourcecode">
 {
     "type": "m.message",
     "content": {
@@ -1216,9 +1217,11 @@ chunks of content (other event types) to indicate how a client should render the
         "m.html": "i am a &lt;strong&gt;fish&lt;/strong&gt;"
     }
 }
-</code><a href="#section-2-5" class="pilcrow">¶</a></p>
+</pre><a href="#section-2-5" class="pilcrow">¶</a>
+</div>
 <p id="section-2-6">This can be made more complex if the sender chooses to mix in other mimetypes:<a href="#section-2-6" class="pilcrow">¶</a></p>
-<p id="section-2-7"><code>json
+<div id="section-2-7">
+<pre class="lang-json sourcecode">
 {
   "type": "m.message",
   "content": {
@@ -1229,9 +1232,11 @@ chunks of content (other event types) to indicate how a client should render the
     ]
   }
 }
-</code><a href="#section-2-7" class="pilcrow">¶</a></p>
+</pre><a href="#section-2-7" class="pilcrow">¶</a>
+</div>
 <p id="section-2-8">To demonstrate extensibility, a file upload <span>[<a href="#MSC3551" class="cite xref">MSC3551</a>]</span> might look like:<a href="#section-2-8" class="pilcrow">¶</a></p>
-<p id="section-2-9"><code>json
+<div id="section-2-9">
+<pre class="lang-json sourcecode">
 {
   "type": "m.file",
   "content": {
@@ -1244,7 +1249,8 @@ chunks of content (other event types) to indicate how a client should render the
     }
   }
 }
-</code><a href="#section-2-9" class="pilcrow">¶</a></p>
+</pre><a href="#section-2-9" class="pilcrow">¶</a>
+</div>
 <p id="section-2-10">In this example, clients which do not understand <code>m.file</code> but do understand <code>m.text</code> (or <code>m.message</code>) would show just the plain text instead of
 a download button or link. The alternative to falling back would be to hide the unrenderable event, causing the conversation history to be interrupted:
 this has fairly obvious negative consequences on user experience. Instead, by defining a fallback mechanism the user is still able to participate

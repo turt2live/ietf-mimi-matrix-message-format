@@ -118,24 +118,43 @@ Table of Contents
 
    An example of a simple text message would be:
 
-   json { "type": "m.message", "content": { "m.text": "i am a fish",
-   "m.html": "i am a <strong>fish</strong>" } }
+   {
+       "type": "m.message",
+       "content": {
+           "m.text": "i am a fish",
+           "m.html": "i am a <strong>fish</strong>"
+       }
+   }
 
    This can be made more complex if the sender chooses to mix in other
    mimetypes:
 
-   json { "type": "m.message", "content": { "m.message": [ { "mimetype":
-   "text/html", "body": "i am a <strong>fish</strong>" }, { "mimetype":
-   "text/plain", "body": "i am a fish" }, { "mimetype": "application/
-   vnd.exampleorg.message+html", "body": "<content>i am a
-   <strong>fish</strong></content>" } ] } }
+   {
+     "type": "m.message",
+     "content": {
+       "m.message": [
+           { "mimetype": "text/html", "body": "i am a <strong>fish</strong>" },
+           { "mimetype": "text/plain", "body": "i am a fish" },
+           { "mimetype": "application/vnd.exampleorg.message+html", "body": "<content>i am a <strong>fish</strong></content>" }
+       ]
+     }
+   }
 
    To demonstrate extensibility, a file upload [MSC3551] might look
    like:
 
-   json { "type": "m.file", "content": { "m.text": "Upload: foo.pdf (12
-   KB)", "m.file": { "url": "mxc://example.org/abcd1234", "name":
-   "foo.pdf", "mimetype": "application/pdf", "size": 12345 } } }
+   {
+     "type": "m.file",
+     "content": {
+       "m.text": "Upload: foo.pdf (12 KB)",
+       "m.file": {
+         "url": "mxc://example.org/abcd1234",
+         "name": "foo.pdf",
+         "mimetype": "application/pdf",
+         "size": 12345
+       }
+     }
+   }
 
    In this example, clients which do not understand m.file but do
    understand m.text (or m.message) would show just the plain text
