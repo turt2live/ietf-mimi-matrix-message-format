@@ -106,6 +106,7 @@ including:
  * Replies
  * Deletions
  * Stickers
+ * Custom emoji
  * Voice messages
  * Polls
  * Static location share
