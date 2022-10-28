@@ -107,6 +107,8 @@ Table of Contents
 
    *  Stickers
 
+   *  Custom emoji
+
    *  Voice messages
 
    *  Polls
@@ -152,7 +154,8 @@ Table of Contents
 
    *  type: A string the client can use to determine how to render the
       event.  This is reverse-DNS namespaced, with m. as a privileged
-      prefix for event types defined by the Matrix specification.
+      prefix for event types formally adopted and defined within the
+      Matrix specification.
 
    *  sender: The user ID (@alice:example.org) which sent the event.
 
