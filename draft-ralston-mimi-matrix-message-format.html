@@ -6,6 +6,7 @@
 <meta content="initial-scale=1.0" name="viewport">
 <title>Matrix Message Format</title>
 <meta content="Travis Ralston" name="author">
+<meta content="Matthew Hodgson" name="author">
 <meta content="
        This document specifies a message format using Matrix for messaging interoperability. 
     " name="description">
@@ -1039,7 +1040,7 @@ svg :is([stroke="fill"], [fill^="#fff"]) {
 <td class="right">October 2022</td>
 </tr></thead>
 <tfoot><tr>
-<td class="left">Ralston</td>
+<td class="left">Ralston &amp; Hodgson</td>
 <td class="center">Expires 1 May 2023</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
@@ -1059,10 +1060,14 @@ svg :is([stroke="fill"], [fill^="#fff"]) {
 <dd class="intended-status">Informational</dd>
 <dt class="label-expires">Expires:</dt>
 <dd class="expires"><time datetime="2023-05-01">1 May 2023</time></dd>
-<dt class="label-authors">Author:</dt>
+<dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
       <div class="author-name">T. Ralston</div>
+<div class="org">The Matrix.org Foundation C.I.C.</div>
+</div>
+<div class="author">
+      <div class="author-name">M. Hodgson</div>
 <div class="org">The Matrix.org Foundation C.I.C.</div>
 </div>
 </dd>
@@ -1164,7 +1169,7 @@ svg :is([stroke="fill"], [fill^="#fff"]) {
             <p id="section-toc.1-1.6.1"><a href="#appendix-A" class="auto internal xref"></a><a href="#name-acknowledgments" class="internal xref">Acknowledgments</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7">
-            <p id="section-toc.1-1.7.1"><a href="#appendix-B" class="auto internal xref"></a><a href="#name-authors-address" class="internal xref">Author's Address</a></p>
+            <p id="section-toc.1-1.7.1"><a href="#appendix-B" class="auto internal xref"></a><a href="#name-authors-addresses" class="internal xref">Authors' Addresses</a></p>
 </li>
         </ul>
 </nav>
@@ -1176,10 +1181,58 @@ svg :is([stroke="fill"], [fill^="#fff"]) {
 <a href="#section-1" class="section-number selfRef">1. </a><a href="#name-introduction" class="section-name selfRef">Introduction</a>
       </h2>
 <p id="section-1-1">Interoperable instant messaging requires a common format for all participants to contribute to the conversation or state of the room.
-Matrix, alongside its existing transport functionality [TODO: Link to draft-ralston-mimi-matrix-transport], has support for arbitrarily
-extensible payloads of information called "events" to carry information between machines and users, all with encryption if desired.<a href="#section-1-1" class="pilcrow">¶</a></p>
-<p id="section-1-2">Communication between machines would largely take the form of key sharing or VoIP signalling (in a future phase of MIMI) while communication
-between users would be text, images, etc from normal Instant Messaging (IM) semantics.<a href="#section-1-2" class="pilcrow">¶</a></p>
+Matrix is an open protocol for interoperable, decentralized, secure communication, and alongside its existing transport functionality
+[TODO: Link to draft-ralston-mimi-matrix-transport], defines a rich taxonomy of arbitrarily extensible payloads of
+information called "events" to carry information between machines and users, which may in turn
+be layered over end-to-end encryption.  Matrix events have been designed for interoperability from the outset between
+heterogenous messaging platforms, and define a real-world highest-common denominator set of messages types,
+including:<a href="#section-1-1" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-1-2.1">Instant messages (plain &amp; rich text)<a href="#section-1-2.1" class="pilcrow">¶</a>
+</li>
+        <li class="normal" id="section-1-2.2">End-to-end encrypted payloads<a href="#section-1-2.2" class="pilcrow">¶</a>
+</li>
+        <li class="normal" id="section-1-2.3">File transfer<a href="#section-1-2.3" class="pilcrow">¶</a>
+</li>
+        <li class="normal" id="section-1-2.4">Reactions (emoji, textual, image-based)<a href="#section-1-2.4" class="pilcrow">¶</a>
+</li>
+        <li class="normal" id="section-1-2.5">Edits<a href="#section-1-2.5" class="pilcrow">¶</a>
+</li>
+        <li class="normal" id="section-1-2.6">Replies<a href="#section-1-2.6" class="pilcrow">¶</a>
+</li>
+        <li class="normal" id="section-1-2.7">Deletions<a href="#section-1-2.7" class="pilcrow">¶</a>
+</li>
+        <li class="normal" id="section-1-2.8">Stickers<a href="#section-1-2.8" class="pilcrow">¶</a>
+</li>
+        <li class="normal" id="section-1-2.9">Voice messages<a href="#section-1-2.9" class="pilcrow">¶</a>
+</li>
+        <li class="normal" id="section-1-2.10">Polls<a href="#section-1-2.10" class="pilcrow">¶</a>
+</li>
+        <li class="normal" id="section-1-2.11">Static location share<a href="#section-1-2.11" class="pilcrow">¶</a>
+</li>
+        <li class="normal" id="section-1-2.12">Live location share (ephemeral)<a href="#section-1-2.12" class="pilcrow">¶</a>
+</li>
+        <li class="normal" id="section-1-2.13">Live location share (persistent)<a href="#section-1-2.13" class="pilcrow">¶</a>
+</li>
+        <li class="normal" id="section-1-2.14">Spoiler text<a href="#section-1-2.14" class="pilcrow">¶</a>
+</li>
+        <li class="normal" id="section-1-2.15">Threaded messages<a href="#section-1-2.15" class="pilcrow">¶</a>
+</li>
+        <li class="normal" id="section-1-2.16">Typing notifications<a href="#section-1-2.16" class="pilcrow">¶</a>
+</li>
+        <li class="normal" id="section-1-2.17">Read receipts<a href="#section-1-2.17" class="pilcrow">¶</a>
+</li>
+        <li class="normal" id="section-1-2.18">Read-up-to markers<a href="#section-1-2.18" class="pilcrow">¶</a>
+</li>
+        <li class="normal" id="section-1-2.19">Presence<a href="#section-1-2.19" class="pilcrow">¶</a>
+</li>
+        <li class="normal" id="section-1-2.20">1:1 VoIP signalling<a href="#section-1-2.20" class="pilcrow">¶</a>
+</li>
+        <li class="normal" id="section-1-2.21">Multiparty VoIP signalling<a href="#section-1-2.21" class="pilcrow">¶</a>
+</li>
+      </ul>
+<p id="section-1-3">Matrix events are extensible, and proposals exist for additional event formats ranging from attaching 3D world geometry
+to conversations (for openly standardised metaverse communication) through to transferring healthcare data (FHIR).<a href="#section-1-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="matrix-events">
@@ -1187,28 +1240,33 @@ between users would be text, images, etc from normal Instant Messaging (IM) sema
       <h2 id="name-matrix-events">
 <a href="#section-2" class="section-number selfRef">2. </a><a href="#name-matrix-events" class="section-name selfRef">Matrix Events</a>
       </h2>
-<p id="section-2-1">Events <span>[<a href="#MxEvents" class="cite xref">MxEvents</a>]</span> are JSON objects which get signed and adapted by the server before being forwarded to other servers/users in the room.
-These JSON objects have a few key fields:<a href="#section-2-1" class="pilcrow">¶</a></p>
+<p id="section-2-1">Events are JSON objects which by default follow the formal schemas defined in the Matrix Client Server API <span>[<a href="#MxEvents" class="cite xref">MxEvents</a>]</span>,
+also available as JSON Schema definitions <span>[<a href="#MxEventsSchema" class="cite xref">MxEventsSchema</a>]</span>.  Events are extensible and may contain additional off-schema
+prefixed fields, or use prefixed event types not yet defined in the spec.  Events then get augumented
+and signed by the server before being forwarded to other servers/users in the room.<a href="#section-2-1" class="pilcrow">¶</a></p>
+<p id="section-2-2">These JSON objects have a few key fields:<a href="#section-2-2" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-2-2.1">
-          <code>sender</code>: The user ID (<code>@alice:example.org</code>) which sent the event.<a href="#section-2-2.1" class="pilcrow">¶</a>
+<li class="normal" id="section-2-3.1">
+          <code>type</code>: A string the client can use to determine how to render the event. This is reverse-DNS namespaced, with <code>m.</code> as
+a privileged prefix for event types defined by the Matrix specification.<a href="#section-2-3.1" class="pilcrow">¶</a>
 </li>
-        <li class="normal" id="section-2-2.2">
-          <code>room_id</code>: The room ID (<code>!room:example.org</code>) for where the event was sent.<a href="#section-2-2.2" class="pilcrow">¶</a>
+        <li class="normal" id="section-2-3.2">
+          <code>sender</code>: The user ID (<code>@alice:example.org</code>) which sent the event.<a href="#section-2-3.2" class="pilcrow">¶</a>
 </li>
-        <li class="normal" id="section-2-2.3">
-          <code>type</code>: A string the client can use to determine how to render the event.<a href="#section-2-2.3" class="pilcrow">¶</a>
+        <li class="normal" id="section-2-3.3">
+          <code>room_id</code>: The room ID (<code>!room:example.org</code>) for where the event was sent.<a href="#section-2-3.3" class="pilcrow">¶</a>
 </li>
-        <li class="normal" id="section-2-2.4">
-          <code>content</code>: Type-specific JSON object.<a href="#section-2-2.4" class="pilcrow">¶</a>
+        <li class="normal" id="section-2-3.4">
+          <code>content</code>: Type-specific JSON object.<a href="#section-2-3.4" class="pilcrow">¶</a>
 </li>
-        <li class="normal" id="section-2-2.5">Other fields (TODO: define these in detail when more relevant to the doc).<a href="#section-2-2.5" class="pilcrow">¶</a>
+        <li class="normal" id="section-2-3.5">Other fields (TODO: define these in detail when more relevant to the doc).<a href="#section-2-3.5" class="pilcrow">¶</a>
 </li>
       </ul>
-<p id="section-2-3">Under MSC1767 <span>[<a href="#MSC1767" class="cite xref">MSC1767</a>]</span> (a spec change proposal in the existing Matrix open standard ecosystem), callers would be able to combine useful
-chunks of content (other event types) to indicate how a client should render the event, if it does not already know.<a href="#section-2-3" class="pilcrow">¶</a></p>
-<p id="section-2-4">An example of a simple text message would be:<a href="#section-2-4" class="pilcrow">¶</a></p>
-<div id="section-2-5">
+<p id="section-2-4">Under MSC1767 <span>[<a href="#MSC1767" class="cite xref">MSC1767</a>]</span> (a spec change proposal in the existing Matrix open standard ecosystem), callers can combine
+together multiple event types to provide fallback representations of an event, to provide backwards compatibility when
+rendering unknown event types.<a href="#section-2-4" class="pilcrow">¶</a></p>
+<p id="section-2-5">An example of a simple text message would be:<a href="#section-2-5" class="pilcrow">¶</a></p>
+<div id="section-2-6">
 <pre class="lang-json sourcecode">
 {
     "type": "m.message",
@@ -1217,10 +1275,10 @@ chunks of content (other event types) to indicate how a client should render the
         "m.html": "i am a &lt;strong&gt;fish&lt;/strong&gt;"
     }
 }
-</pre><a href="#section-2-5" class="pilcrow">¶</a>
+</pre><a href="#section-2-6" class="pilcrow">¶</a>
 </div>
-<p id="section-2-6">This can be made more complex if the sender chooses to mix in other mimetypes:<a href="#section-2-6" class="pilcrow">¶</a></p>
-<div id="section-2-7">
+<p id="section-2-7">This can be made more complex if the sender chooses to mix in other mimetypes:<a href="#section-2-7" class="pilcrow">¶</a></p>
+<div id="section-2-8">
 <pre class="lang-json sourcecode">
 {
   "type": "m.message",
@@ -1232,15 +1290,15 @@ chunks of content (other event types) to indicate how a client should render the
     ]
   }
 }
-</pre><a href="#section-2-7" class="pilcrow">¶</a>
+</pre><a href="#section-2-8" class="pilcrow">¶</a>
 </div>
-<p id="section-2-8">To demonstrate extensibility, a file upload <span>[<a href="#MSC3551" class="cite xref">MSC3551</a>]</span> might look like:<a href="#section-2-8" class="pilcrow">¶</a></p>
-<div id="section-2-9">
+<p id="section-2-9">To demonstrate extensibility, a file upload <span>[<a href="#MSC3551" class="cite xref">MSC3551</a>]</span> might look like:<a href="#section-2-9" class="pilcrow">¶</a></p>
+<div id="section-2-10">
 <pre class="lang-json sourcecode">
 {
   "type": "m.file",
   "content": {
-    "m.text": "Upload: foo.pdf (12 KB)",
+    "m.text": "Upload: foo.pdf https://example.org/_matrix/media/v3/download/example.org/abcd1234 (12 KB)",
     "m.file": {
       "url": "mxc://example.org/abcd1234",
       "name": "foo.pdf",
@@ -1249,17 +1307,17 @@ chunks of content (other event types) to indicate how a client should render the
     }
   }
 }
-</pre><a href="#section-2-9" class="pilcrow">¶</a>
+</pre><a href="#section-2-10" class="pilcrow">¶</a>
 </div>
-<p id="section-2-10">In this example, clients which do not understand <code>m.file</code> but do understand <code>m.text</code> (or <code>m.message</code>) would show just the plain text instead of
-a download button or link. The alternative to falling back would be to hide the unrenderable event, causing the conversation history to be interrupted:
-this has fairly obvious negative consequences on user experience. Instead, by defining a fallback mechanism the user is still able to participate
+<p id="section-2-11">In this example, clients which do not understand <code>m.file</code> but do understand <code>m.text</code> (or <code>m.message</code>) would show just the plain text instead of
+a download button. The alternative to falling back would be to hide the unrenderable event, causing the conversation history to be fragmented:
+this has clear negative consequences on user experience. Instead, by defining a fallback mechanism the user is still able to participate
 in the conversation, though might need to ask for more information. It is expected that the "base types" (text messages, images, videos, and
-generic files) would be supported by all clients to ensure there are sufficient building blocks for future extensibility.<a href="#section-2-10" class="pilcrow">¶</a></p>
-<p id="section-2-11">A more complete use-case for extensible events is described by "MSC3381: Polls" <span>[<a href="#MSC3381" class="cite xref">MSC3381</a>]</span> - clients which do not yet have support for polls
+generic files) would be supported by all clients to ensure there are sufficient building blocks for future extensibility.<a href="#section-2-11" class="pilcrow">¶</a></p>
+<p id="section-2-12">A more complete use-case for extensible events is described by "MSC3381: Polls" <span>[<a href="#MSC3381" class="cite xref">MSC3381</a>]</span> - clients which do not yet have support for polls
 can present their users with text fallback for the question and the question asker can manually tally up "improper" responses (if those users
 simply sent text messages in response to the question). Clients which do support polls would simply show the poll and its question/options for
-the user to click on - their response would be sent to the room as a (deliberately) unrenderable event for other clients to tally up automatically.<a href="#section-2-11" class="pilcrow">¶</a></p>
+the user to click on - their response would be sent to the room as a (deliberately) unrenderable event for other clients to tally up automatically.<a href="#section-2-12" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="encryption">
@@ -1302,8 +1360,12 @@ are currently defined by <span>[<a href="#DMLS" class="cite xref">DMLS</a>]</spa
 <span class="refAuthor">Ralston, T.</span>, <span class="refTitle">"Extensible Events - Files"</span>, <time datetime="2021" class="refDate">2021</time>, <span>&lt;<a href="https://github.com/matrix-org/matrix-spec-proposals/blob/5bf2118e8ac873e7845b1eedde8dd7bc187ed673/proposals/3551-extensible-events-files.md">https://github.com/matrix-org/matrix-spec-proposals/blob/5bf2118e8ac873e7845b1eedde8dd7bc187ed673/proposals/3551-extensible-events-files.md</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="MxEvents">[MxEvents]</dt>
-      <dd>
+        <dd>
 <span class="refAuthor">The Matrix.org Foundation C.I.C.</span>, <span class="refTitle">"Events | Client-Server API"</span>, <time datetime="2022" class="refDate">2022</time>, <span>&lt;<a href="https://spec.matrix.org/v1.4/client-server-api/#events">https://spec.matrix.org/v1.4/client-server-api/#events</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="MxEventsSchema">[MxEventsSchema]</dt>
+      <dd>
+<span class="refAuthor">The Matrix.org Foundation C.I.C.</span>, <span class="refTitle">"Matrix Event JSON Schemas"</span>, <time datetime="2022" class="refDate">2022</time>, <span>&lt;<a href="https://github.com/matrix-org/matrix-spec/tree/main/data/event-schemas/schema">https://github.com/matrix-org/matrix-spec/tree/main/data/event-schemas/schema</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 </dl>
 </section>
@@ -1333,8 +1395,8 @@ are currently defined by <span>[<a href="#DMLS" class="cite xref">DMLS</a>]</spa
 </div>
 <div id="authors-addresses">
 <section id="appendix-B">
-      <h2 id="name-authors-address">
-<a href="#name-authors-address" class="section-name selfRef">Author's Address</a>
+      <h2 id="name-authors-addresses">
+<a href="#name-authors-addresses" class="section-name selfRef">Authors' Addresses</a>
       </h2>
 <address class="vcard">
         <div dir="auto" class="left"><span class="fn nameRole">Travis Ralston</span></div>
@@ -1342,6 +1404,14 @@ are currently defined by <span>[<a href="#DMLS" class="cite xref">DMLS</a>]</spa
 <div class="email">
 <span>Email:</span>
 <a href="mailto:travisr@matrix.org" class="email">travisr@matrix.org</a>
+</div>
+</address>
+<address class="vcard">
+        <div dir="auto" class="left"><span class="fn nameRole">Matthew Hodgson</span></div>
+<div dir="auto" class="left"><span class="org">The Matrix.org Foundation C.I.C.</span></div>
+<div class="email">
+<span>Email:</span>
+<a href="mailto:matthew@matrix.org" class="email">matthew@matrix.org</a>
 </div>
 </address>
 </section>
