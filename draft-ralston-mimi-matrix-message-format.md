@@ -80,13 +80,17 @@ This document specifies a message format using Matrix for messaging interoperabi
 
 # Introduction
 
-Interoperable instant messaging requires a common format for all participants to contribute to the conversation or state of the room. Matrix, alongside its existing transport functionality [TODO: Link to draft-ralston-mimi-matrix-transport], has support for arbitrarily extensible payloads of information called "events" to carry information between machines and users, all with encryption if desired.
+Interoperable instant messaging requires a common format for all participants to contribute to the conversation or state of the room.
+Matrix, alongside its existing transport functionality [TODO: Link to draft-ralston-mimi-matrix-transport], has support for arbitrarily
+extensible payloads of information called "events" to carry information between machines and users, all with encryption if desired.
 
-Communication between machines would largely take the form of key sharing or VoIP signalling (in a future phase of MIMI) while communication between users would be text, images, etc from normal Instant Messaging (IM) semantics.
+Communication between machines would largely take the form of key sharing or VoIP signalling (in a future phase of MIMI) while communication
+between users would be text, images, etc from normal Instant Messaging (IM) semantics.
 
 # Matrix Events
 
-Events {{MxEvents}} are JSON objects which get signed and adapted by the server before being forwarded to other servers/users in the room. These JSON objects have a few key fields:
+Events {{MxEvents}} are JSON objects which get signed and adapted by the server before being forwarded to other servers/users in the room.
+These JSON objects have a few key fields:
 
 * `sender`: The user ID (`@alice:example.org`) which sent the event.
 * `room_id`: The room ID (`!room:example.org`) for where the event was sent.
@@ -94,7 +98,8 @@ Events {{MxEvents}} are JSON objects which get signed and adapted by the server 
 * `content`: Type-specific JSON object.
 * Other fields (TODO: define these in detail when more relevant to the doc).
 
-Under MSC1767 {{MSC1767}} (a spec change proposal in the existing Matrix open standard ecosystem), callers would be able to combine useful chunks of content (other event types) to indicate how a client should render the event, if it does not already know.
+Under MSC1767 {{MSC1767}} (a spec change proposal in the existing Matrix open standard ecosystem), callers would be able to combine useful
+chunks of content (other event types) to indicate how a client should render the event, if it does not already know.
 
 An example of a simple text message would be:
 
@@ -140,13 +145,22 @@ To demonstrate extensibility, a file upload {{MSC3551}} might look like:
 }
 ```
 
-In this example, clients which do not understand `m.file` but do understand `m.text` (or `m.message`) would show just the plain text instead of a download button or link. The alternative to falling back would be to hide the unrenderable event, causing the conversation history to be interrupted: this has fairly obvious negative consequences on user experience. Instead, by defining a fallback mechanism the user is still able to participate in the conversation, though might need to ask for more information. It is expected that the "base types" (text messages, images, videos, and generic files) would be supported by all clients to ensure there are sufficient building blocks for future extensibility.
+In this example, clients which do not understand `m.file` but do understand `m.text` (or `m.message`) would show just the plain text instead of
+a download button or link. The alternative to falling back would be to hide the unrenderable event, causing the conversation history to be interrupted:
+this has fairly obvious negative consequences on user experience. Instead, by defining a fallback mechanism the user is still able to participate
+in the conversation, though might need to ask for more information. It is expected that the "base types" (text messages, images, videos, and
+generic files) would be supported by all clients to ensure there are sufficient building blocks for future extensibility.
 
-A more complete use-case for extensible events is described by "MSC3381: Polls" {{MSC3381}} - clients which do not yet have support for polls can present their users with text fallback for the question and the question asker can manually tally up "improper" responses (if those users simply sent text messages in response to the question). Clients which do support polls would simply show the poll and its question/options for the user to click on - their response would be sent to the room as a (deliberately) unrenderable event for other clients to tally up automatically.
+A more complete use-case for extensible events is described by "MSC3381: Polls" {{MSC3381}} - clients which do not yet have support for polls
+can present their users with text fallback for the question and the question asker can manually tally up "improper" responses (if those users
+simply sent text messages in response to the question). Clients which do support polls would simply show the poll and its question/options for
+the user to click on - their response would be sent to the room as a (deliberately) unrenderable event for other clients to tally up automatically.
 
 # Encryption
 
-Matrix has specified an encryption algorithm for events called Megolm, however for the purposes of MIMI it would be desirable to adopt MLS {{!I-D.ietf-mls-protocol}} instead. Some bookkeeping changes are required to support MLS in a decentralized environment like Matrix: those are currently defined by {{DMLS}}.
+Matrix has specified an encryption algorithm for events called Megolm, however for the purposes of MIMI it would be desirable to adopt MLS
+{{!I-D.ietf-mls-protocol}} instead. Some bookkeeping changes are required to support MLS in a decentralized environment like Matrix: those
+are currently defined by {{DMLS}}.
 
 # Security Considerations
 
