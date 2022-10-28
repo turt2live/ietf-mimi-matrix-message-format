@@ -121,7 +121,7 @@ including:
  * Multiparty VoIP signalling
 
 Matrix events are extensible, and proposals exist for additional event formats ranging from attaching 3D world geometry
-to conversations (for openly standardised metaverse communication) through to transferring healthcare data (FHIR).
+to conversations (for openly standardized metaverse communication) through to transferring healthcare data (FHIR).
 
 # Matrix Events
 
