@@ -1,0 +1,210 @@
+{
+  "magic": "E!vIA5L86J2I",
+  "timestamp": "2022-10-30T00:25:16.298573+00:00",
+  "repo": "turt2live/ietf-mimi-matrix-message-format",
+  "labels": [
+    {
+      "name": "bug",
+      "description": "Something isn't working",
+      "color": "d73a4a"
+    },
+    {
+      "name": "documentation",
+      "description": "Improvements or additions to documentation",
+      "color": "0075ca"
+    },
+    {
+      "name": "duplicate",
+      "description": "This issue or pull request already exists",
+      "color": "cfd3d7"
+    },
+    {
+      "name": "enhancement",
+      "description": "New feature or request",
+      "color": "a2eeef"
+    },
+    {
+      "name": "good first issue",
+      "description": "Good for newcomers",
+      "color": "7057ff"
+    },
+    {
+      "name": "help wanted",
+      "description": "Extra attention is needed",
+      "color": "008672"
+    },
+    {
+      "name": "invalid",
+      "description": "This doesn't seem right",
+      "color": "e4e669"
+    },
+    {
+      "name": "question",
+      "description": "Further information is requested",
+      "color": "d876e3"
+    },
+    {
+      "name": "wontfix",
+      "description": "This will not be worked on",
+      "color": "ffffff"
+    }
+  ],
+  "issues": [
+    {
+      "number": 1,
+      "id": "I_kwDOIUuq_85VBQNC",
+      "title": "Multiline code block examples are mangled",
+      "url": "https://github.com/turt2live/ietf-mimi-matrix-message-format/issues/1",
+      "state": "CLOSED",
+      "author": "turt2live",
+      "authorAssociation": "OWNER",
+      "assignees": [
+        "turt2live"
+      ],
+      "labels": [],
+      "body": "",
+      "createdAt": "2022-10-27T23:54:45Z",
+      "updatedAt": "2022-10-28T00:50:54Z",
+      "closedAt": "2022-10-28T00:50:54Z",
+      "comments": [
+        {
+          "author": "turt2live",
+          "authorAssociation": "OWNER",
+          "body": "Fixed by 885e8854d86ee3d9457499a5012790f37d9dce84",
+          "createdAt": "2022-10-28T00:50:54Z",
+          "updatedAt": "2022-10-28T00:50:54Z"
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "id": "I_kwDOIUuq_85VBQS0",
+      "title": "Word wrap the markdown for easier review/contribution",
+      "url": "https://github.com/turt2live/ietf-mimi-matrix-message-format/issues/2",
+      "state": "CLOSED",
+      "author": "turt2live",
+      "authorAssociation": "OWNER",
+      "assignees": [
+        "turt2live"
+      ],
+      "labels": [],
+      "body": "",
+      "createdAt": "2022-10-27T23:55:24Z",
+      "updatedAt": "2022-10-28T00:51:04Z",
+      "closedAt": "2022-10-28T00:51:03Z",
+      "comments": [
+        {
+          "author": "turt2live",
+          "authorAssociation": "OWNER",
+          "body": "Fixed by 690db7e13bc51659d7d5f0a50239d96c1701c32f",
+          "createdAt": "2022-10-28T00:51:03Z",
+          "updatedAt": "2022-10-28T00:51:03Z"
+        }
+      ]
+    },
+    {
+      "number": 5,
+      "id": "I_kwDOIUuq_85VBv91",
+      "title": "JSON examples overflow in the plaintext format",
+      "url": "https://github.com/turt2live/ietf-mimi-matrix-message-format/issues/5",
+      "state": "OPEN",
+      "author": "turt2live",
+      "authorAssociation": "OWNER",
+      "assignees": [
+        "turt2live"
+      ],
+      "labels": [],
+      "body": "",
+      "createdAt": "2022-10-28T02:24:21Z",
+      "updatedAt": "2022-10-28T02:24:21Z",
+      "closedAt": null,
+      "comments": []
+    }
+  ],
+  "pulls": [
+    {
+      "number": 3,
+      "id": "PR_kwDOIUuq_85BtaOW",
+      "title": "review pass 1",
+      "url": "https://github.com/turt2live/ietf-mimi-matrix-message-format/pull/3",
+      "state": "MERGED",
+      "author": "ara4n",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "* explain the events that Matrix provides (both spec & plausible MSCs)\r\n* explain we formally spec the schemas\r\n* explain prefixing a bit\r\n* wording tweaks",
+      "createdAt": "2022-10-28T01:25:12Z",
+      "updatedAt": "2022-10-28T01:31:10Z",
+      "baseRepository": "turt2live/ietf-mimi-matrix-message-format",
+      "baseRefName": "main",
+      "baseRefOid": "885e8854d86ee3d9457499a5012790f37d9dce84",
+      "headRepository": "ara4n/ietf-mimi-matrix-message-format",
+      "headRefName": "matthew/review",
+      "headRefOid": "aa1475852348e4f946e747c6840301e3102848b7",
+      "closedAt": "2022-10-28T01:31:09Z",
+      "mergedAt": "2022-10-28T01:31:09Z",
+      "mergedBy": "turt2live",
+      "mergeCommit": {
+        "oid": "3a62b251c73c65a12c8d6846a73613a95e224b4e"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOIUuq_85FGGPU",
+          "commit": {
+            "abbreviatedOid": "70f0184"
+          },
+          "author": "turt2live",
+          "authorAssociation": "OWNER",
+          "state": "APPROVED",
+          "body": "thanks!",
+          "createdAt": "2022-10-28T01:31:00Z",
+          "updatedAt": "2022-10-28T01:31:00Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "id": "PR_kwDOIUuq_85BtcSn",
+      "title": "More tweaks",
+      "url": "https://github.com/turt2live/ietf-mimi-matrix-message-format/pull/4",
+      "state": "MERGED",
+      "author": "ara4n",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "* add custom emoji\r\n* wordsmith",
+      "createdAt": "2022-10-28T01:36:03Z",
+      "updatedAt": "2022-10-28T01:36:38Z",
+      "baseRepository": "turt2live/ietf-mimi-matrix-message-format",
+      "baseRefName": "main",
+      "baseRefOid": "182388a4543e04440b4530221e02e52d800b0f45",
+      "headRepository": "ara4n/ietf-mimi-matrix-message-format",
+      "headRefName": "matthew/review",
+      "headRefOid": "94e42cb81ecc861f2b328cd3e73f6093cd34d75a",
+      "closedAt": "2022-10-28T01:36:38Z",
+      "mergedAt": "2022-10-28T01:36:38Z",
+      "mergedBy": "turt2live",
+      "mergeCommit": {
+        "oid": "84c7bf1e4ac7063c41443f33a6392115da1a3e25"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOIUuq_85FGIXC",
+          "commit": {
+            "abbreviatedOid": "94e42cb"
+          },
+          "author": "turt2live",
+          "authorAssociation": "OWNER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2022-10-28T01:36:34Z",
+          "updatedAt": "2022-10-28T01:36:34Z",
+          "comments": []
+        }
+      ]
+    }
+  ]
+}
