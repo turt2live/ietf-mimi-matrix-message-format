@@ -80,6 +80,12 @@ informative:
       Web: https://gitlab.matrix.org/matrix-org/mls-ts/-/blob/dd57bc25f6145ddedfb6d193f6baebf5133db7ed/decentralised.org
     format:
       ORG: https://gitlab.matrix.org/matrix-org/mls-ts/-/blob/dd57bc25f6145ddedfb6d193f6baebf5133db7ed/decentralised.org
+   BoFMIMI:
+     target: https://datatracker.ietf.org/doc/bofreq-cooper-more-instant-messaging-interoperability
+     title: "More Instant Messaging Interoperability"
+     date: 2022
+     author:
+       - name: Alissa Cooper
 
 --- abstract
 
@@ -201,7 +207,7 @@ the user to click on - their response would be sent to the room as a (deliberate
 
 # Encryption
 
-Matrix has specified an encryption algorithm for events called Megolm, however for the purposes of MIMI it would be desirable to adopt MLS
+Matrix has specified an encryption algorithm for events called Megolm, however for the purposes of MIMI {{BoFMIMI}} it would be desirable to adopt MLS
 {{!I-D.ietf-mls-protocol}} instead. Some bookkeeping changes are required to support MLS in a decentralized environment like Matrix: those
 are currently defined by {{DMLS}}.
 
