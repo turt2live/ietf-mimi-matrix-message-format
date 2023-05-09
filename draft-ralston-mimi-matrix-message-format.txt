@@ -5,7 +5,7 @@
 More Instant Messaging Interoperability                       T. Ralston
 Internet-Draft                                                M. Hodgson
 Intended status: Informational          The Matrix.org Foundation C.I.C.
-Expires: 1 May 2023                                      28 October 2022
+Expires: 10 November 2023                                     9 May 2023
 
 
                          Matrix Message Format
@@ -13,8 +13,8 @@ Expires: 1 May 2023                                      28 October 2022
 
 Abstract
 
-   This document specifies a message format using Matrix for messaging
-   interoperability.
+   This document describes the Matrix event format for use over a
+   delivery protocol like Linearized Matrix.
 
 About This Document
 
@@ -49,11 +49,11 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 1 May 2023.
+   This Internet-Draft will expire on 10 November 2023.
 
 Copyright Notice
 
-   Copyright (c) 2022 IETF Trust and the persons identified as the
+   Copyright (c) 2023 IETF Trust and the persons identified as the
    document authors.  All rights reserved.
 
    This document is subject to BCP 78 and the IETF Trust's Legal
@@ -82,14 +82,15 @@ Table of Contents
    Interoperable instant messaging requires a common format for all
    participants to contribute to the conversation or state of the room.
    Matrix is an open protocol for interoperable, decentralized, secure
-   communication, and alongside its existing transport functionality
-   [TODO: Link to draft-ralston-mimi-matrix-transport], defines a rich
-   taxonomy of arbitrarily extensible payloads of information called
-   "events" to carry information between machines and users, which may
-   in turn be layered over end-to-end encryption.  Matrix events have
-   been designed for interoperability from the outset between
-   heterogenous messaging platforms, and define a real-world highest-
-   common denominator set of message types, including:
+   communication, and includes a "linearized" API surface to abstract
+   away the complexities of DAGs, described by
+   [I-D.ralston-mimi-linearized-matrix].  Matrix defines a rich taxonomy
+   of arbitrarily extensible payloads of information called "events" to
+   carry information between machines and users, which may in turn be
+   layered over end-to-end encryption.  Matrix events have been designed
+   for interoperability from the outset between heterogenous messaging
+   platforms, and define a real-world highest-common denominator set of
+   message types, including:
 
    *  Instant messages (plain & rich text)
 
@@ -142,6 +143,9 @@ Table of Contents
 
 2.  Matrix Events
 
+   *TODO*: Bring spec references into the I-D, like we did with
+   Linearized Matrix.
+
    Events are JSON objects which by default follow the formal schemas
    defined in the Matrix Client Server API [MxEvents], also available as
    JSON Schema definitions [MxEventsSchema].  Events are extensible and
@@ -192,7 +196,10 @@ Table of Contents
        "m.message": [
            { "mimetype": "text/html", "body": "i am a <strong>fish</strong>" },
            { "mimetype": "text/plain", "body": "i am a fish" },
-           { "mimetype": "application/vnd.exampleorg.message+html", "body": "<content>i am a <strong>fish</strong></content>" }
+           {
+             "mimetype": "application/vnd.exampleorg.message+html",
+             "body": "<content>i am a <strong>fish</strong></content>"
+           }
        ]
      }
    }
@@ -203,7 +210,7 @@ Table of Contents
    {
      "type": "m.file",
      "content": {
-       "m.text": "Upload: foo.pdf https://example.org/_matrix/media/v3/download/example.org/abcd1234 (12 KB)",
+       "m.text": "Upload: foo.pdf https://<download url> (12 KB)",
        "m.file": {
          "url": "mxc://example.org/abcd1234",
          "name": "foo.pdf",
@@ -256,9 +263,9 @@ Table of Contents
               Barnes, R., Beurdouche, B., Robert, R., Millican, J.,
               Omara, E., and K. Cohn-Gordon, "The Messaging Layer
               Security (MLS) Protocol", Work in Progress, Internet-
-              Draft, draft-ietf-mls-protocol-16, 11 July 2022,
+              Draft, draft-ietf-mls-protocol-20, 27 March 2023,
               <https://datatracker.ietf.org/doc/html/draft-ietf-mls-
-              protocol-16>.
+              protocol-20>.
 
    [MSC1767]  Hodgson, M. and T. Ralston, "Extensible event types &
               fallback in Matrix (v2)", 2022, <https://github.com/
@@ -289,6 +296,13 @@ Table of Contents
               matrix-org/mls-ts/-
               /blob/dd57bc25f6145ddedfb6d193f6baebf5133db7ed/
               decentralised.org>.
+
+   [I-D.ralston-mimi-linearized-matrix]
+              Ralston, T. and M. Hodgson, "Linearized Matrix API", Work
+              in Progress, Internet-Draft, draft-ralston-mimi-
+              linearized-matrix-00, 25 March 2023,
+              <https://datatracker.ietf.org/doc/html/draft-ralston-mimi-
+              linearized-matrix-00>.
 
    [MSC3381]  Ralston, T., "Polls (mk II)", 2022, <https://github.com/
               matrix-org/matrix-spec-
