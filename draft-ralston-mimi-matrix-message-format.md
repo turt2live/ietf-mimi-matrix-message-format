@@ -83,7 +83,7 @@ informative:
 
 --- abstract
 
-This document specifies a message format using Matrix for messaging interoperability.
+This document describes the Matrix event format for use over a delivery protocol like Linearized Matrix.
 
 
 --- middle
@@ -91,10 +91,10 @@ This document specifies a message format using Matrix for messaging interoperabi
 # Introduction
 
 Interoperable instant messaging requires a common format for all participants to contribute to the conversation or state of the room.
-Matrix is an open protocol for interoperable, decentralized, secure communication, and alongside its existing transport functionality
-[TODO: Link to draft-ralston-mimi-matrix-transport], defines a rich taxonomy of arbitrarily extensible payloads of
-information called "events" to carry information between machines and users, which may in turn
-be layered over end-to-end encryption.  Matrix events have been designed for interoperability from the outset between
+Matrix is an open protocol for interoperable, decentralized, secure communication, and includes a "linearized" API surface to abstract
+away the complexities of DAGs, described by {{?I-D.ralston-mimi-linearized-matrix}}. Matrix defines a rich taxonomy of arbitrarily
+extensible payloads of information called "events" to carry information between machines and users, which may in turn
+be layered over end-to-end encryption. Matrix events have been designed for interoperability from the outset between
 heterogenous messaging platforms, and define a real-world highest-common denominator set of message types,
 including:
 
@@ -125,6 +125,8 @@ Matrix events are extensible, and proposals exist for additional event formats r
 to conversations (for openly standardized metaverse communication) through to transferring healthcare data (FHIR).
 
 # Matrix Events
+
+**TODO**: Bring spec references into the I-D, like we did with Linearized Matrix.
 
 Events are JSON objects which by default follow the formal schemas defined in the Matrix Client Server API {{MxEvents}},
 also available as JSON Schema definitions {{MxEventsSchema}}.  Events are extensible and may contain additional off-schema
