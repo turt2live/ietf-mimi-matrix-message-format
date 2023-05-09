@@ -167,7 +167,10 @@ This can be made more complex if the sender chooses to mix in other mimetypes:
     "m.message": [
         { "mimetype": "text/html", "body": "i am a <strong>fish</strong>" },
         { "mimetype": "text/plain", "body": "i am a fish" },
-        { "mimetype": "application/vnd.exampleorg.message+html", "body": "<content>i am a <strong>fish</strong></content>" }
+        {
+          "mimetype": "application/vnd.exampleorg.message+html",
+          "body": "<content>i am a <strong>fish</strong></content>"
+        }
     ]
   }
 }
@@ -179,7 +182,7 @@ To demonstrate extensibility, a file upload {{MSC3551}} might look like:
 {
   "type": "m.file",
   "content": {
-    "m.text": "Upload: foo.pdf https://example.org/_matrix/media/v3/download/example.org/abcd1234 (12 KB)",
+    "m.text": "Upload: foo.pdf https://<download url> (12 KB)",
     "m.file": {
       "url": "mxc://example.org/abcd1234",
       "name": "foo.pdf",
